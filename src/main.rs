@@ -19,10 +19,10 @@ fn main() {
     loop {
         info!("----------------------------");
         let measurements = bme280.measure().unwrap();
-        info!("Rel. humidity: {}%", measurements.humidity);
-        info!("Temperature:   {}%", measurements.temperature);
-        info!("Pressure:      {}%", measurements.pressure);
-        thread::sleep(Duration::from_secs(5)); 
+        info!("Rel. humidity: {} %", measurements.humidity);
+        info!("Temperature:   {} C", measurements.temperature);
+        info!("Pressure:      {} Pa", measurements.pressure);
+        thread::sleep(Duration::from_secs(120)); 
     }
 }
 
