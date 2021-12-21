@@ -9,3 +9,6 @@ edition = "2018"
 rppal = "0.13.1"
 log = "0.4"
 env_logger = "0.9"
+
+[profile.release]
+opt-level = "z"  # Optimize for size.
