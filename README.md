@@ -8,9 +8,20 @@ PROJ="hello_rpi0"
 docker run --volume $PROJ:/home/cross/project --entrypoint /home/cross/bin/run.sh rust-raspberry-cross build --release
 scp -r $PROJ/target/arm-unknown-linux-gnueabihf/release/$PROJ tc@<IP_ADDRESS>:
 ```
+
+## Prodman
+If using podman rootless containers the project directory has to be accessible from the container.
+The podman unshare command will do this for us.
+
+```
+$ podman unshare chown 1000:1000 -R hello_rpi0
+$ podman run -v $PWD/hello_rpi0:/home/cross/project rust-raspberry:1.56.1 build
+```
+
 Login into the RPi0 and run the application which is placed inside home folder.
 To activate logging export the two environment variables APP_LOG_STYLE and APP_LOG_LEVEL.
 The application can be executed like: 
 ```
 $ APP_LOG_STYLE=always APP_LOG_LEVEL=debug ./hello_rpi0
 ```
+
