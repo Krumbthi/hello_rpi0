@@ -9,7 +9,7 @@ docker run --volume $PROJ:/home/cross/project --entrypoint /home/cross/bin/run.s
 scp -r $PROJ/target/arm-unknown-linux-gnueabihf/release/$PROJ tc@<IP_ADDRESS>:
 ```
 
-## Prodman
+## Podman
 If using podman rootless containers the project directory has to be accessible from the container.
 The podman unshare command will do this for us.
 
