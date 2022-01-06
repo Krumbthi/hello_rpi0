@@ -6,32 +6,26 @@ inherit cargo
 # DEFAULT_PREFERENCE = "-1"
 
 # how to get hello_rpi0 could be as easy as but default to a git checkout:
-# SRC_URI += "crate://crates.io/hello_rpi0/0.1.0"
+# SRC_URI += "crate://crates.io/hello_rpi0/0.1.1"
 SRC_URI += "git://github.com/Krumbthi/hello_rpi0.git;protocol=https;nobranch=1;branch=main"
-SRCREV = "e7d7e5928fad14d107d4f08016796c8a7d612852"
+SRCREV = "e4154c078a24131a618bb6295f79adb180df6359"
 S = "${WORKDIR}/git"
 CARGO_SRC_DIR = ""
-PV_append = ".AUTOINC+e7d7e5928f"
+PV_append = ".AUTOINC+e4154c078a"
 
 # please note if you have entries that do not begin with crate://
 # you must change them to how that package can be fetched
 SRC_URI += " \
-    crate://crates.io/aho-corasick/0.7.18 \
-    crate://crates.io/atty/0.2.14 \
     crate://crates.io/autocfg/1.0.1 \
     crate://crates.io/bitflags/1.3.2 \
     crate://crates.io/bytes/1.1.0 \
     crate://crates.io/cc/1.0.72 \
     crate://crates.io/cfg-if/0.1.10 \
     crate://crates.io/cfg-if/1.0.0 \
-    crate://crates.io/env_logger/0.9.0 \
     crate://crates.io/getrandom/0.2.3 \
-    crate://crates.io/hermit-abi/0.1.19 \
-    crate://crates.io/humantime/2.1.0 \
     crate://crates.io/lazy_static/1.4.0 \
     crate://crates.io/libc/0.2.112 \
     crate://crates.io/log/0.4.14 \
-    crate://crates.io/memchr/2.4.1 \
     crate://crates.io/memoffset/0.6.5 \
     crate://crates.io/nix/0.23.1 \
     crate://crates.io/ppv-lite86/0.2.16 \
@@ -40,16 +34,12 @@ SRC_URI += " \
     crate://crates.io/rand_core/0.6.3 \
     crate://crates.io/rand_hc/0.3.1 \
     crate://crates.io/raw_sync/0.1.5 \
-    crate://crates.io/regex-syntax/0.6.25 \
-    crate://crates.io/regex/1.5.4 \
     crate://crates.io/rppal/0.13.1 \
     crate://crates.io/shared_memory/0.12.2 \
-    crate://crates.io/termcolor/1.1.2 \
     crate://crates.io/wasi/0.10.2+wasi-snapshot-preview1 \
     crate://crates.io/widestring/0.5.1 \
     crate://crates.io/win-sys/0.1.0 \
     crate://crates.io/winapi-i686-pc-windows-gnu/0.4.0 \
-    crate://crates.io/winapi-util/0.1.5 \
     crate://crates.io/winapi-x86_64-pc-windows-gnu/0.4.0 \
     crate://crates.io/winapi/0.3.9 \
     crate://crates.io/windows/0.26.0 \
