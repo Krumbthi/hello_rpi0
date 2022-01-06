@@ -24,4 +24,7 @@ The application can be executed like:
 ```
 $ APP_LOG_STYLE=always APP_LOG_LEVEL=debug ./hello_rpi0
 ```
-
+# Integrate rust project into yocto recipe
+To generate a bitbake recipe run 
+```cargo bitbake```
+inside the project folder.  
