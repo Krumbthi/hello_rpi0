@@ -14,7 +14,7 @@ fn main() {
 
     let mut bme280 = BME280::new();
     bme280.init().unwrap();
-    let shmem_flink = "environment.json";
+    let shmem_flink = "/dev/shm/environment.json";
 
     let path = Path::new(shmem_flink);
     let path_disp = path.display();
