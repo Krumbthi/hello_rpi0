@@ -5,7 +5,6 @@ use log::{info, debug, error};
 use shared_memory::*;
 use std::sync::atomic::{AtomicU8, Ordering};
 use raw_sync::locks::*;
-use bytes::Bytes;
 
 mod bme280;
 use bme280::BME280;
@@ -74,13 +73,14 @@ fn main() {
         info!("Temperature:   {} C", meas.temperature);
         info!("Pressure:      {} Pa", meas.pressure);
         let payload = format!("{{\"Data\": {{\"Temperature\":{}, \"Humidity\":{}, \"Pressure\":{} }}}}", meas.temperature, meas.humidity, meas.pressure);
-        let mut data = Bytes::from(payload);
+        
+        let mut data = payload.as_bytes();
         unsafe {
             raw_ptr = raw_ptr.add(data.len());
         }
         
         //*val = <&[u8; data.len()]>::try_from(data);
-        let v = data.slice(0..data.len());
+        let v = data.as_ptr();
         debug!("{:?}", v);
 
         thread::sleep(Duration::from_secs(120)); 
