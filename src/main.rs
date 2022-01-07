@@ -5,6 +5,8 @@ use log::{info, debug, error};
 
 use std::fs::File;
 use std::path::Path;
+use serde_json::json;
+
 
 mod bme280;
 use bme280::BME280;
@@ -31,9 +33,16 @@ fn main() {
         info!("Rel. humidity: {} %", meas.humidity);
         info!("Temperature:   {} C", meas.temperature);
         info!("Pressure:      {} Pa", meas.pressure);
-        let payload = format!("{{\"Data\": {{\"Temperature\":{}, \"Humidity\":{}, \"Pressure\":{} }}}}", meas.temperature, meas.humidity, meas.pressure);
+        //let payload = format!("{{\"Data\": {{\"Temperature\":{}, \"Humidity\":{}, \"Pressure\":{} }}}}", meas.temperature, meas.humidity, meas.pressure);
+        let payload = json!({
+            "Data": {
+                "Temperature": meas.temperature, 
+                "Humidity": meas.humidity, 
+                "Pressure": meas.pressure
+            }
+        });
         
-        match out_file.write(payload.as_bytes()) {
+        match out_file.write(serde_json::to_string(&payload).unwrap().as_bytes()) {
             Err(err) => error!("Could not write to {}: {}", path_disp, err),
             Ok(_) => debug!("Data written to file"),
         }
