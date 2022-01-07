@@ -11,8 +11,6 @@ repository = "https://github.com/Krumbthi/hello_rpi0.git"
 [dependencies]
 rppal = "0.13.1"
 log = "0.4"
-shared_memory = "0.12"
-raw_sync = "0.1"
 
 [profile.release]
 opt-level = "z"  # Optimize for size.
