@@ -11,6 +11,7 @@ repository = "https://github.com/Krumbthi/hello_rpi0.git"
 [dependencies]
 rppal = "0.13.1"
 log = "0.4"
+serde_json = "1.0"
 
 [profile.release]
 opt-level = "z"  # Optimize for size.
