@@ -23,12 +23,12 @@ fn main() -> std::io::Result<()> {
     let path_disp = path.display();
     debug!("{}", &path_disp);
 
-    /*let mut out_file = match File::create(&path) {
+    let mut out_file = match File::create(&path) {
         Err(err) => panic!("couldn't create {}: {}", path_disp, err),
         Ok(file) => file,
-    };*/
+    };
 
-    let mut out_file = File::create(&path)?;
+    //let mut out_file = File::create(&path)?;
 
     loop {
         info!("----------------------------");
